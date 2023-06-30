@@ -45,8 +45,12 @@ if not Global.KryptonData then
 		['Script Stopped'] = false,
 		['Script Running'] = false,
 		['Global Events'] = {},
-		['Hat Folder'] = Instance.new("Folder") 
+		['Hat Folder'] = Instance.new("Folder"),
+		['FlingPart'] = nil, --ee
+		['Flinging'] = false
 	}
+else
+    Global.KryptonData.FlingPart = nil
 end
 
 local Workspace = game:FindFirstChildOfClass("Workspace")
@@ -60,10 +64,35 @@ local Physics = settings().Physics
 local LocalPlayer = Players.LocalPlayer
 local RealRig = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
 
+--ee
+local Backpack = LocalPlayer:FindFirstChildOfClass("Backpack")
+if RealRig:FindFirstChildOfClass("Tool") then
+    print("yes fling")
+	local Tool = RealRig:FindFirstChildOfClass("Tool")
+	Tool.Parent = RealRig
+	RealRig:WaitForChild(Tool.Name)
+
+	local FlingPart = Tool:WaitForChild("Handle")
+	Global.KryptonData.FlingPart = Tool:WaitForChild("Handle")
+	FlingPart.Transparency = 0.25
+
+	if Backpack then
+		Backpack:ClearAllChildren()
+	end
+
+	task.delay(Players.RespawnTime + 1.65, function()
+		FlingPart.Massless = true
+	end)
+end
+
+
+
 local RealRigDescendants = RealRig:GetDescendants()
-local FakeHum, FakeRoot, FakeTorso, FakeRightArm, FakeLeftArm, FakeRightLeg, FakeLeftLeg; local FakeRig = IN("Model"); do
+local FakeHum, FakeRoot, FakeTorso, FakeRightArm, FakeLeftArm, FakeRightLeg, FakeLeftLeg
+local FakeRig = IN("Model")
+do
 	local function CI(ClassName, Info) local Inst = IN(ClassName) for i, v in pairs(Info) do Inst[i]=v end return Inst end
-	local Head = CI("Part", {Name = "Head", Size = V3N(2, 1, 1), Parent = FakeRig});
+	local Head = CI("Part", {Name = "Head", Size = V3N(2, 1, 1), Parent = FakeRig})
 	FakeRoot = CI("Part", {Name = "HumanoidRootPart", Size = V3N(2, 2, 1), Transparency = 1, Parent = FakeRig})
 	FakeTorso = CI("Part", {Name = "Torso", Size = V3N(2, 2, 1), Parent = FakeRig})
 	FakeRightArm = CI("Part", {Name = "Right Arm", Size = V3N(1, 2, 1), Parent = FakeRig})
@@ -77,8 +106,11 @@ local FakeHum, FakeRoot, FakeTorso, FakeRightArm, FakeLeftArm, FakeRightLeg, Fak
 	CI("Motor6D", {Name = "Left Shoulder", Part0 = FakeTorso, Part1 = FakeLeftArm, C0 = CFN(-1, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0), C1 = CFN(0.5, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0), Parent = FakeTorso})
 	CI("Motor6D", {Name = "Right Hip", Part0 = FakeTorso, Part1 = FakeRightLeg, C0 = CFN(1, -1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0), C1 = CFN(0.5, 1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0), Parent = FakeTorso})
 	CI("Motor6D", {Name = "Left Hip", Part0 = FakeTorso, Part1 = FakeLeftLeg, C0 = CFN(-1, -1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0), C1 = CFN(-0.5, 1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0), Parent = FakeTorso})
-	CI("Animator", {Parent = FakeHum}); CI("HumanoidDescription", {Parent = FakeHum}); CI("SpecialMesh", {Scale = V3N(1,1,1)*1.25, Parent = Head})
-	CI("Script", {Name = "Health", Parent = FakeRig}); CI("LocalScript", {Name = "Animate", Parent = FakeRig})
+	CI("Animator", {Parent = FakeHum})
+CI("HumanoidDescription", {Parent = FakeHum})
+CI("SpecialMesh", {Scale = V3N(1,1,1)*1.25, Parent = Head})
+	CI("Script", {Name = "Health", Parent = FakeRig})
+CI("LocalScript", {Name = "Animate", Parent = FakeRig})
 	CI("Decal", {Name = "face", Texture = "rbxasset://textures/face.png", Transparency = 1, Parent = Head})
 	IN("Shirt", FakeRig) IN("Pants", FakeRig) IN("ShirtGraphic", FakeRig)
 	CI("Attachment", {Name = "FaceCenterAttachment", Axis = V3N(1,0,0), SecondaryAxis = V3N(0,1,0), Parent = Head})
@@ -100,7 +132,9 @@ local FakeHum, FakeRoot, FakeTorso, FakeRightArm, FakeLeftArm, FakeRightLeg, Fak
 	CI("Attachment", {Name = "WaistBackAttachment", Position = V3N(0, -1, 0.5), Axis = V3N(1,0,0), SecondaryAxis = V3N(0,1,0), Parent = FakeTorso})
 	CI("Attachment", {Name = "WaistCenterAttachment", Position = V3N(0, -1, 0), Axis = V3N(1,0,0), SecondaryAxis = V3N(0,1,0), Parent = FakeTorso})
 	CI("Attachment", {Name = "WaistFrontAttachment", Position = V3N(0, -1, -0.5), Axis = V3N(1,0,0), SecondaryAxis = V3N(0,1,0), Parent = FakeTorso})
-	FakeRig.PrimaryPart = Head; FakeRig.Name = LocalPlayer.Name; FakeRig.Parent = Workspace
+	FakeRig.PrimaryPart = Head
+FakeRig.Name = LocalPlayer.Name
+FakeRig.Parent = Workspace
 end
 
 local LoadPoint = RealRig.PrimaryPart.CFrame * CFN(0,5,0)
@@ -216,12 +250,18 @@ Spawn(function()
         [6] = {"http://www.roblox.com/asset/?id=11263219250", CFN(0,0,0), CFA(0,Rad(90), Rad(90)), false},
     }
 	
-	local T1 = GetHandle(DesiredHats[1][1], DesiredHats[1][4]); local T1_CF = DesiredHats[1][2] * DesiredHats[1][3]
-	local T2 = GetHandle(DesiredHats[2][1], DesiredHats[2][4]); local T2_CF = DesiredHats[2][2] * DesiredHats[2][3]
-	local RA = GetHandle(DesiredHats[3][1], DesiredHats[3][4]); local RA_CF = DesiredHats[3][2] * DesiredHats[3][3]
-	local LA = GetHandle(DesiredHats[4][1], DesiredHats[4][4]); local LA_CF = DesiredHats[4][2] * DesiredHats[4][3]
-	local RL = GetHandle(DesiredHats[5][1], DesiredHats[5][4]); local RL_CF = DesiredHats[5][2] * DesiredHats[5][3]
-	local LL = GetHandle(DesiredHats[6][1], DesiredHats[6][4]); local LL_CF = DesiredHats[6][2] * DesiredHats[6][3]
+	local T1 = GetHandle(DesiredHats[1][1], DesiredHats[1][4])
+local T1_CF = DesiredHats[1][2] * DesiredHats[1][3]
+	local T2 = GetHandle(DesiredHats[2][1], DesiredHats[2][4])
+local T2_CF = DesiredHats[2][2] * DesiredHats[2][3]
+	local RA = GetHandle(DesiredHats[3][1], DesiredHats[3][4])
+local RA_CF = DesiredHats[3][2] * DesiredHats[3][3]
+	local LA = GetHandle(DesiredHats[4][1], DesiredHats[4][4])
+local LA_CF = DesiredHats[4][2] * DesiredHats[4][3]
+	local RL = GetHandle(DesiredHats[5][1], DesiredHats[5][4])
+local RL_CF = DesiredHats[5][2] * DesiredHats[5][3]
+	local LL = GetHandle(DesiredHats[6][1], DesiredHats[6][4])
+local LL_CF = DesiredHats[6][2] * DesiredHats[6][3]
 
 	TInsert(Events, RunService.PostSimulation:Connect(function()
 		CFrameTo(T1, FakeTorso, T1_CF)
@@ -237,13 +277,24 @@ Spawn(function()
 			end
 		end
 
+		--ee
+		if Global.KryptonData.FlingPart then
+			Global.KryptonData.FlingPart.CanCollide = false
+			Global.KryptonData.FlingPart.CanTouch = false
+			Global.KryptonData.FlingPart.CanQuery = false
+			if not Global.KryptonData.Flinging then
+				CFrameTo(Global.KryptonData.FlingPart, FakeRoot, CFN(0, -20, 0))
+			end
+		end
+
 		if FakeRoot and FakeHum.MoveDirection.Magnitude <= 0.1 then
 			FakeRoot.CFrame = FakeRoot.CFrame * CFN(0.005 * Cos(Clock()*19), 0, 0)
 		end
 	end))
 end)
 
-local Parent = RealRig.Parent; TInsert(Events, RealRig:GetPropertyChangedSignal("Parent"):Connect(function()
+local Parent = RealRig.Parent
+TInsert(Events, RealRig:GetPropertyChangedSignal("Parent"):Connect(function()
 	Parent = RealRig.Parent
 	if Parent == nil then
 		ClearUpData()
@@ -549,7 +600,8 @@ Spawn(function()
 	local function getTool()
 		for _, kid in ipairs(FakeRig:GetChildren()) do
 			if kid.className == "Tool" then return kid end
-		end; return nil
+		end
+return nil
 	end
 
 	local function getToolAnim(tool)
