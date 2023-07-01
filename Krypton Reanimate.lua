@@ -82,6 +82,7 @@ if RealRig:FindFirstChildOfClass("Tool") then
 
 	task.delay(Players.RespawnTime + 1.65, function()
 		FlingPart.Massless = true
+		Global.KryptonData.FlingPart.Velocity = Vector3.new(0, 0, 0)
 	end)
 end
 

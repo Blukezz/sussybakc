@@ -5968,9 +5968,8 @@ end
 return unpack(list)
 end
  
---local Bullet = Global.RealChar:FindFirstChild("Bullet")
---local funnyfunction
---local funnyattacking = "yes"
+
+
 local Hat = Character:FindFirstChild("MeshPartAccessory")
 local HatAlt = Character:FindFirstChild("Dark Matter Sword")
 if HatAlt and Hat then
@@ -6009,9 +6008,9 @@ if Bullet then
 	local Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
 	table.insert(Global.KryptonData["Global Events"], game:GetService("RunService").Heartbeat:Connect(function()
 		Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
-		Global.KryptonData.Flinging = true
-		Bullet.RotVelocity = Vector3.new(0, 7500, 0)
-		Bullet.CFrame = weaponweld.Parent.CFrame * CFrame.new(-2.6, 0, 0) * Rotation
+		  Global.KryptonData.Flinging = true
+			Bullet.RotVelocity = Vector3.new(0, 7500, 0)
+			Bullet.CFrame = weaponweld.Parent.CFrame * CFrame.new(-2.6, 0, 0) * Rotation
 	end))
 
 	funnyfunction = function(target)
