@@ -118,7 +118,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonReanimateConfig.KryptonDefinedHats = Oof
+        Global.KryptonDefinedHats = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Attack%20Rifle.lua'))()
@@ -130,7 +130,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonReanimateConfig.KryptonDefinedHats = Oof
+        Global.KryptonDefinedHats = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Banzai%20Bazooka.lua'))()
@@ -142,7 +142,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonReanimateConfig.KryptonDefinedHats = Oof
+        Global.KryptonDefinedHats = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Dual%20Ultima.lua'))()
@@ -154,7 +154,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonReanimateConfig.KryptonDefinedHats = Oof
+        Global.KryptonDefinedHats = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.8)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Ender.lua'))()
@@ -166,7 +166,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonReanimateConfig.KryptonDefinedHats = Oof
+        Global.KryptonDefinedHats = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Neptunion%20V.lua'))()
@@ -178,7 +178,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonReanimateConfig.KryptonDefinedHats = Oof
+        Global.KryptonDefinedHats = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Quenox.lua'))()
@@ -190,7 +190,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonReanimateConfig.KryptonDefinedHats = Oof
+        Global.KryptonDefinedHats = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/The%20Carnage.lua'))()
@@ -202,7 +202,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonReanimateConfig.KryptonDefinedHats = Oof
+        Global.KryptonDefinedHats = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/The%20Chips.lua'))()
@@ -214,7 +214,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonReanimateConfig.KryptonDefinedHats = Oof
+        Global.KryptonDefinedHats = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Gale%20Fighter.lua'))()
@@ -226,7 +226,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonReanimateConfig.KryptonDefinedHats = Oof
+        Global.KryptonDefinedHats = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Goner.lua'))()
@@ -238,7 +238,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonReanimateConfig.KryptonDefinedHats = Oof
+        Global.KryptonDefinedHats = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/The%20Hotline.lua'))()
