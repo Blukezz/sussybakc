@@ -47,10 +47,12 @@ if not Global.KryptonData then
 		['Global Events'] = {},
 		['Hat Folder'] = Instance.new("Folder"),
 		['FlingPart'] = nil, --ee
-		['Flinging'] = false
+		['Flinging'] = false,
+		['Booting'] = true --ee
 	}
 else
     Global.KryptonData.FlingPart = nil
+	Global.KryptonData.Booting = true
 end
 
 local Workspace = game:FindFirstChildOfClass("Workspace")
@@ -283,6 +285,9 @@ local LL_CF = DesiredHats[6][2] * DesiredHats[6][3]
 			Global.KryptonData.FlingPart.CanCollide = false
 			Global.KryptonData.FlingPart.CanTouch = false
 			Global.KryptonData.FlingPart.CanQuery = false
+			if Global.KryptonData.Booting then
+				Global.KryptonData.FlingPart.Velocity = Vector3.new(0, 0, 0)
+			end
 			if not Global.KryptonData.Flinging then
 				CFrameTo(Global.KryptonData.FlingPart, FakeRoot, CFN(0, -20, 0))
 			end
@@ -728,4 +733,5 @@ return nil
 end)
 
 warn("Loaded!, Reanimated in: ".. tostring(Players.RespawnTime + Ping:GetValue()/750 + 3 + 0.1).."s. Made by gelatek / Discord: @usedtampons")
+Global.KryptonData.Booting = false --ee
 -- players respawn time + delay + wait + 0.125 (script execution delay),
