@@ -74,7 +74,7 @@ if RealRig:FindFirstChildOfClass("Tool") then
 
 	local FlingPart = Tool:WaitForChild("Handle")
 	Global.KryptonData.FlingPart = Tool:WaitForChild("Handle")
-	FlingPart.Transparency = 0.25
+	FlingPart.Transparency = 0.5
 
 	if Backpack then
 		Backpack:ClearAllChildren()

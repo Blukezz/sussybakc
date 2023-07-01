@@ -236,6 +236,7 @@ Frame2.Size = UDim2.new(0, 0, 0, 14)
 end
 end))
 
+
 local Global = (getgenv and getgenv()) or getfenv(0)
 local Bullet = Global.KryptonData.FlingPart
 local funnyfunction
@@ -245,10 +246,11 @@ if Bullet then
 
 	local Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
 	table.insert(Global.KryptonData["Global Events"], game:GetService("RunService").Heartbeat:Connect(function()
-		Global.KryptonData.Flinging = true
 		Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
-		Bullet.RotVelocity = Vector3.new(0, 7500, 0)
-		Bullet.CFrame = plr.Character:FindFirstChild("HumanoidRootPart").CFrame * Rotation
+		if Bullet and Global.KryptonData.Flinging then
+			Bullet.RotVelocity = Vector3.new(0, 7500, 0)
+			Bullet.CFrame = TargetPart.CFrame * Rotation
+		end
 	end))
 
 	funnyfunction = function(target)
@@ -256,9 +258,11 @@ if Bullet then
 		if TargetPart.RotVelocity.Magnitude > 50 then
 			return
 		else
+			coroutine.wrap(function()
 			Global.KryptonData.Flinging = true
-			coroutine.wrap(function() wait(0.5) end)()
+			wait(0.5)
 			Global.KryptonData.Flinging = false
+			end)()
 		end
 	end
 end

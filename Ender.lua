@@ -239,9 +239,11 @@ if Bullet then
 		if TargetPart.RotVelocity.Magnitude > 50 then
 			return
 		else
+			coroutine.wrap(function()
 			Global.KryptonData.Flinging = true
-			coroutine.wrap(function() wait(0.5) end)()
+			wait(0.5)
 			Global.KryptonData.Flinging = false
+			end)()
 		end
 	end
 end

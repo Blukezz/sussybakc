@@ -353,7 +353,6 @@ function rayCast(Pos, Dir, Max, Ignore)  -- Origin Position , Direction, MaxDist
 return game:service("Workspace"):FindPartOnRay(Ray.new(Pos, Dir.unit * (Max or 999.999)), Ignore) 
 end 
 
-
 local Global = (getgenv and getgenv()) or getfenv(0)
 local Bullet = Global.KryptonData.FlingPart
 local funnyfunction
@@ -375,9 +374,11 @@ if Bullet then
 		if TargetPart.RotVelocity.Magnitude > 50 then
 			return
 		else
+			coroutine.wrap(function()
 			Global.KryptonData.Flinging = true
-			coroutine.wrap(function() wait(0.5) end)()
+			wait(0.5)
 			Global.KryptonData.Flinging = false
+			end)()
 		end
 	end
 end
