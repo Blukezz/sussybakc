@@ -353,50 +353,35 @@ function rayCast(Pos, Dir, Max, Ignore)  -- Origin Position , Direction, MaxDist
 return game:service("Workspace"):FindPartOnRay(Ray.new(Pos, Dir.unit * (Max or 999.999)), Ignore) 
 end 
 
---[[
-local Bullet = Global.RealChar:FindFirstChild("Bullet")
-local funnyfunction
-local funnyattacking = "yes"
 
+local Global = (getgenv and getgenv()) or getfenv(0)
+local Bullet = Global.KryptonData.FlingPart
+local funnyfunction
 if Bullet then
-	if Bullet:FindFirstChild("AntiRotate") then
-		Bullet:FindFirstChild("AntiRotate"):Destroy()
-	end
-	Global.PartDisconnected = true
-	local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-	local RootTo = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-	if Hat then
-		RootTo = Hat.Handle
-	end
-	local Pos = Instance.new("BodyPosition")
-	Pos.MaxForce = Vector3.new(1,1,1)*math.huge
-	Pos.P = 25000
-	Pos.D = 125
-	Pos.Name = "Movement"
-	Pos.Position = Bullet.Position
-	Pos.Parent = Bullet
-	local Flinger = Instance.new("BodyAngularVelocity")
-	Flinger.MaxTorque = Vector3.new(1,1,1)*math.huge
-	Flinger.P = math.huge
-	Flinger.AngularVelocity = Vector3.new(5000,5000,5000)
-	Flinger.Name = "Flinger"
-	Flinger.Parent = Bullet
-	table.insert(Events, game:GetService("RunService").PostSimulation:Connect(function()
-		if funnyattacking == "yes" then
-			Pos.Position = RootTo.Position
+	local TargetPart
+	warn(Bullet.Name)
+
+	local Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
+	table.insert(Global.KryptonData["Global Events"], game:GetService("RunService").Heartbeat:Connect(function()
+		Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
+		if Bullet and Global.KryptonData.Flinging then
+			Bullet.RotVelocity = Vector3.new(0, 7500, 0)
+			Bullet.CFrame = TargetPart.CFrame * Rotation
 		end
 	end))
+
 	funnyfunction = function(target)
-		local part = target:FindFirstChild("Head")
-		funnyattacking = "no"
-		for i = 1,15 do
-			Pos.Position = part.Position
-			wait(0.03)
+		TargetPart = target:FindFirstChild("Head") or target:FindFirstChildOfClass("BasePart")
+		if TargetPart.RotVelocity.Magnitude > 50 then
+			return
+		else
+			Global.KryptonData.Flinging = true
+			coroutine.wrap(function() wait(0.5) end)()
+			Global.KryptonData.Flinging = false
 		end
-		funnyattacking = "yes"
 	end
 end
-]]--
+
 
 Damagefunc=function(Part,hit,minim,maxim,knockback,Type,Property,Delay,KnockbackType,decreaseblock)
         if hit.Parent==nil then
@@ -415,7 +400,7 @@ Damagefunc=function(Part,hit,minim,maxim,knockback,Type,Property,Delay,Knockback
         hit=hit.Parent.Parent:findFirstChild("Head")
         end
         if h~=nil and hit.Parent.Name~=Character.Name and hit.Parent:FindFirstChild("Head")~=nil then
-		--if Bullet then funnyfunction(hit.Parent) end
+		if Bullet then funnyfunction(hit.Parent) end
         --[[                if game.Players:GetPlayerFromCharacter(hit.Parent)~=nil then
                         return
                 end]]

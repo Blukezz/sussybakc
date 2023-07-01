@@ -574,40 +574,41 @@ local TRAIL = Instance.new("Trail"); do
 	end)
 end
 local Hat = CHARACTER:FindFirstChild("K2")
---local Bullet = Global.RealChar:FindFirstChild("Bullet")
 if Hat then
 	SWORD.Transparency = 1
 	Hat.Handle:BreakJoints()
 	Global.AlignPart(Hat.Handle,SWORD, Vector3.new(0,-0.5,0), Vector3.new(-0, 0, -117))
 end
---[[
+
+
+local Global = (getgenv and getgenv()) or getfenv(0)
+local Bullet = Global.KryptonData.FlingPart
+local funnyfunction
 if Bullet then
-	if Bullet:FindFirstChild("AntiRotate") then
-		Bullet:FindFirstChild("AntiRotate"):Destroy()
-	end
-	Global.PartDisconnected = true
-	local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-	local RootTo = SWORD
-	if Hat then
-		RootTo = Hat.Handle
-	end
-	local Pos = Instance.new("BodyPosition")
-	Pos.MaxForce = Vector3.new(1,1,1)*math.huge
-	Pos.P = 25000
-	Pos.D = 125
-	Pos.Name = "Movement"
-	Pos.Position = Bullet.Position
-	Pos.Parent = Bullet
-	local Flinger = Instance.new("BodyAngularVelocity")
-	Flinger.MaxTorque = Vector3.new(1,1,1)*math.huge
-	Flinger.P = math.huge
-	Flinger.AngularVelocity = Vector3.new(5000,5000,5000)
-	Flinger.Name = "Flinger"
-	Flinger.Parent = Bullet
-	table.insert(Events, game:GetService("RunService").PostSimulation:Connect(function()
-		Pos.Position = RootTo.Position
+	local TargetPart
+	warn(Bullet.Name)
+
+	local Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
+	table.insert(Global.KryptonData["Global Events"], game:GetService("RunService").Heartbeat:Connect(function()
+		Global.KryptonData.Flinging = true
+		Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
+		Bullet.RotVelocity = Vector3.new(0, 7500, 0)
+		Bullet.CFrame = SWORD.CFrame * Rotation
 	end))
-end]]--
+
+	funnyfunction = function(target)
+		TargetPart = target:FindFirstChild("Head") or target:FindFirstChildOfClass("BasePart")
+		if TargetPart.RotVelocity.Magnitude > 50 then
+			return
+		else
+			Global.KryptonData.Flinging = true
+			coroutine.wrap(function() wait(0.5) end)()
+			Global.KryptonData.Flinging = false
+		end
+	end
+end
+
+
 local SOUND_SNAP = 150315649
 local SUBMERGED = false
 table.insert(PARTS,SWORD)

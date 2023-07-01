@@ -376,38 +376,41 @@ function AddTo(ADD)
 	STOREDGUI.Text = "STORED: "..STORED
 end
 local fullattack = false
---[[
-local Bullet = Global.RealChar:FindFirstChild("Bullet")
+
+
+
+local Global = (getgenv and getgenv()) or getfenv(0)
+local Bullet = Global.KryptonData.FlingPart
 if Bullet then
-	if Bullet:FindFirstChild("AntiRotate") then
-		Bullet:FindFirstChild("AntiRotate"):Destroy()
-	end
-	Global.PartDisconnected = true
 	local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-	local RootTo = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-	local Pos = Instance.new("BodyPosition")
-	Pos.MaxForce = Vector3.new(1,1,1)*math.huge
-	Pos.P = 25000
-	Pos.D = 125
-	Pos.Name = "Movement"
-	Pos.Position = Bullet.Position
-	Pos.Parent = Bullet
-	local Flinger = Instance.new("BodyAngularVelocity")
-	Flinger.MaxTorque = Vector3.new(1,1,1)*math.huge
-	Flinger.P = math.huge
-	Flinger.AngularVelocity = Vector3.new(5000,5000,5000)
-	Flinger.Name = "Flinger"
-	Flinger.Parent = Bullet
-	table.insert(Events, game:GetService("RunService").PostSimulation:Connect(function()
-		if fullattack then
+	warn(Bullet.Name)
+
+	--[[
+	table.insert(Global.KryptonData["Global Events"], Mouse.Button1Down:Connect(function()
+		Global.KryptonData.Flinging = true
+	end))
+
+	table.insert(Global.KryptonData["Global Events"], Mouse.Button1Up:Connect(function()
+		Global.KryptonData.Flinging = false
+	end))
+	]]--
+
+	local Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
+	table.insert(Global.KryptonData["Global Events"], game:GetService("RunService").Heartbeat:Connect(function()
+		Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
+		if Bullet and fullattack then
+			Global.KryptonData.Flinging = true
+			Bullet.RotVelocity = Vector3.new(0, 7500, 0)
 			if Mouse.Target ~= nil then
-				Pos.Position = Mouse.Hit.Position
+				Bullet.CFrame = Mouse.Hit * Rotation
 			end
-		else
-			Pos.Position = RootTo.Position
+		elseif Bullet and not fullattack then
+			Global.KryptonData.Flinging = false
 		end
 	end))
-end]]--
+end
+
+
 
 local Hat = game.Players.LocalPlayer.Character:FindFirstChild('Back Attack Missle Launcher')
 if Hat then

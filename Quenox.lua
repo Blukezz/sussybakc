@@ -502,46 +502,29 @@ function SpikeEff(CF,Parts,MoreTent,SegmentLength)
 	end)()
 end
 
---[[
-local Bullet = Global.RealChar:FindFirstChild("Bullet")
-local funnything = "yes"
-local function funnyfunction()
-	task.spawn(function()
-		funnything = "no"
-		task.wait(0.7)
-		funnything = "yes"
-	end)
-end
+local Global = (getgenv and getgenv()) or getfenv(0)
+local Bullet = Global.KryptonData.FlingPart
+local funnyfunction
 if Bullet then
-	if Bullet:FindFirstChild("AntiRotate") then
-		Bullet:FindFirstChild("AntiRotate"):Destroy()
-	end
-	Global.PartDisconnected = true
+	local TargetPart
 	local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-	local RootTo = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-	local Pos = Instance.new("BodyPosition")
-	Pos.MaxForce = Vector3.new(1,1,1)*math.huge
-	Pos.P = 25000
-	Pos.D = 125
-	Pos.Name = "Movement"
-	Pos.Position = Bullet.Position
-	Pos.Parent = Bullet
-	local Flinger = Instance.new("BodyAngularVelocity")
-	Flinger.MaxTorque = Vector3.new(1,1,1)*math.huge
-	Flinger.P = math.huge
-	Flinger.AngularVelocity = Vector3.new(5000,5000,5000)
-	Flinger.Name = "Flinger"
-	Flinger.Parent = Bullet
-	table.insert(Events, game:GetService("RunService").PostSimulation:Connect(function()
-		if funnything == "no" then
-			if Mouse.Target ~= nil then
-				Pos.Position = Mouse.Hit.Position
-			end
-		elseif funnything == "yes" then
-			Pos.Position = RootTo.Position
+	warn(Bullet.Name)
+
+	local Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
+	table.insert(Global.KryptonData["Global Events"], game:GetService("RunService").Heartbeat:Connect(function()
+		Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
+		if Bullet and Global.KryptonData.Flinging then
+			Bullet.RotVelocity = Vector3.new(0, 7500, 0)
+			Bullet.CFrame = Mouse.Hit * Rotation
 		end
 	end))
-end]]--
+
+	funnyfunction = function()
+		Global.KryptonData.Flinging = true
+		coroutine.wrap(function() wait(0.7) end)()
+		Global.KryptonData.Flinging = false
+    end
+end
 
 
 function Ignite(Hit)
@@ -570,7 +553,7 @@ local DMG1=function() coroutine.wrap(function() for i=1,10 do local D=Damage.new
 local Combos={
 	function()
 		Using=true
-		--funnyfunction()
+		funnyfunction()
 		EquippedPool=120
 		PlayAnim(Anims.Swing1,{[1]=DMG,[2]=DMG1,[3]=function()
 			
@@ -591,7 +574,7 @@ local Combos={
 	end,
 	function()
 		Using=true
-		--funnyfunction()
+		funnyfunction()
 		EquippedPool=120
 		PlayAnim(Anims.Swing2,{[1]=DMG,[2]=DMG1,[3]=DMG,[4]=DMG1,[5]=DMG,[6]=function()
 			
