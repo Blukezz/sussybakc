@@ -242,7 +242,7 @@ Wait(Players.RespawnTime + Ping:GetValue()/750)
 RealRig:BreakJoints()
 
 Spawn(function()
-	local DesiredHats = Global.KryptonReanimateConfig.DefinedHats or {
+	local DesiredHats = Global.KryptonDefinedHats or {
         [1] = {"rbxassetid://12483623817", CFN(0,0,0), CFA(0,0,0), false},
         [2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
         [3] = {"rbxassetid://12344206675", CFN(0,0,0), CFA(Rad(-125),0,0), false},
