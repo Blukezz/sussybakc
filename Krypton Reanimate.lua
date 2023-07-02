@@ -244,7 +244,72 @@ Wait(Players.RespawnTime + Ping:GetValue()/750)
 RealRig:BreakJoints()
 
 Spawn(function()
-	local DesiredHats = Global.KryptonDefinedHats
+	local HatPreset = Global.KryptonHatPreset --ee
+	local DesiredHats
+	if HatPreset == 1 then
+		DesiredHats = {
+			[1] = {"rbxassetid://13778226115", CFN(0,0,0), CFA(0,0,0), true},
+			[2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
+	
+			[3] = {"rbxassetid://12344206675", CFN(0,0,0), CFA(Rad(-125),0,0), false},
+			[4] = {"rbxassetid://12344207341", CFN(0,0,0), CFA(Rad(-125),0,0), false},
+	
+			[5] = {"http://www.roblox.com/asset/?id=11159284657", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
+			[6] = {"http://www.roblox.com/asset/?id=11263219250", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
+		}
+	elseif HatPreset == 2 then
+		DesiredHats = {
+			[1] = {"rbxassetid://12483623817", CFN(0,0,0), CFA(0,0,0), false},
+			[2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
+	
+			[3] = {"rbxassetid://12344206675", CFN(0,0,0), CFA(Rad(-125),0,0), false},
+			[4] = {"rbxassetid://12344207341", CFN(0,0,0), CFA(Rad(-125),0,0), false},
+	
+			[5] = {"http://www.roblox.com/asset/?id=11159284657", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
+			[6] = {"http://www.roblox.com/asset/?id=11263219250", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
+		}
+	elseif HatPreset == 3 then
+		DesiredHats = {
+			[1] = {'rbxassetid://11499419610', CFN(0,0,0), CFA(Rad(180),0,0), false},
+			[2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
+	
+			[3] = {'http://www.roblox.com/asset/?id=11159284657', CFN(0,0,0), CFA(0,Rad(90), Rad(90)), false},
+			[4] = {'http://www.roblox.com/asset/?id=11159285454', CFN(0,0,0), CFA(0,Rad(-90), Rad(-90)), false},
+			[5] = {'rbxassetid://12652775021', CFN(0,0.1,0), CFA(0,Rad(90), 0), false},
+			[6] = {'http://www.roblox.com/asset/?id=11263219250', CFN(0,-0.05,0), CFA(0,Rad(90),Rad(90)), false},
+		}
+	elseif HatPreset == 4 then
+		DesiredHats = {
+			[1] = {"rbxassetid://13415110780", CFN(0,0,0), CFA(0,0,0), false},
+			[2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
+		
+			[3] = {"rbxassetid://12652775021", CFN(0,0.09,0), CFA(0,Rad(-180),0), false},
+			[4] = {"http://www.roblox.com/asset/?id=11159285454", CFN(0,0,0), CFA(0,0,Rad(90)), false},
+		
+			[5] = {"http://www.roblox.com/asset/?id=11159284657", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
+			[6] = {"http://www.roblox.com/asset/?id=11263219250", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
+		}
+	elseif HatPreset == 5 then
+		DesiredHats = {
+			[1] = {'rbxassetid://4819722776', CFN(0,0,0), CFA(0,0,Rad(-15)), false},
+			[2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
+	
+			[3] = {'rbxassetid://4391374782', CFN(0,0,0), CFA(Rad(90), 0, Rad(-90)), false},
+			[4] = {'rbxassetid://4489233876', CFN(0,0,0), CFA(Rad(90), 0, Rad(90)), false},
+			[5] = {'rbxassetid://4154474807', CFN(0,0,0), CFA(Rad(-90), 0, Rad(90)), false},
+			[6] = {'rbxassetid://4094881938', CFN(0,0,0), CFA(Rad(-90), 0, Rad(-90)), false},
+		}
+	elseif HatPreset == 6 then
+		DesiredHats = {
+			[1] = {'rbxassetid://6963024829', CFN(0,0,0), CFA(0,0,0), true},
+			[2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
+	
+			[3] = {'rbxassetid://11449388499', CFN(0,0,0), CFA(Rad(-125), 0, 0), true},
+			[4] = {'rbxassetid://11449386931', CFN(0,0,0), CFA(Rad(-125), 0, 0), true},
+			[5] = {'rbxassetid://11159370334', CFN(0,0,0), CFA(0, Rad(-90), Rad(90)), true},
+			[6] = {'rbxassetid://11263221350', CFN(0,0,0), CFA(0, Rad(-90), Rad(90)), true},
+		}
+	end
 	
 	local T1 = GetHandle(DesiredHats[1][1], DesiredHats[1][4])
 local T1_CF = DesiredHats[1][2] * DesiredHats[1][3]

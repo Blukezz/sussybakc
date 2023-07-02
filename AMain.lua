@@ -46,68 +46,17 @@ local Dropdown = Tab:CreateDropdown({
     SectionParent = Section,
     Callback = function(Option)
         if Option == "Sukma (white arms furry tosro) (1)" then
-            Oof = {
-                [1] = {"rbxassetid://13778226115", CFN(0,0,0), CFA(0,0,0), true},
-                [2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
-        
-                [3] = {"rbxassetid://12344206675", CFN(0,0,0), CFA(Rad(-125),0,0), false},
-                [4] = {"rbxassetid://12344207341", CFN(0,0,0), CFA(Rad(-125),0,0), false},
-        
-                [5] = {"http://www.roblox.com/asset/?id=11159284657", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
-                [6] = {"http://www.roblox.com/asset/?id=11263219250", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
-            }
+            Oof = 1
         elseif Option == "Sukma (white arms) (2)" then
-                Oof = {
-                [1] = {"rbxassetid://12483623817", CFN(0,0,0), CFA(0,0,0), false},
-                [2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
-        
-                [3] = {"rbxassetid://12344206675", CFN(0,0,0), CFA(Rad(-125),0,0), false},
-                [4] = {"rbxassetid://12344207341", CFN(0,0,0), CFA(Rad(-125),0,0), false},
-        
-                [5] = {"http://www.roblox.com/asset/?id=11159284657", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
-                [6] = {"http://www.roblox.com/asset/?id=11263219250", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
-            }
+                Oof = 2
         elseif Option == "Blocky (3)" then
-                Oof = {
-                [1] = {'rbxassetid://11499419610', CFN(0,0,0), CFA(Rad(180),0,0), false},
-                [2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
-        
-                [3] = {'http://www.roblox.com/asset/?id=11159284657', CFN(0,0,0), CFA(0,Rad(90), Rad(90)), false},
-                [4] = {'http://www.roblox.com/asset/?id=11159285454', CFN(0,0,0), CFA(0,Rad(-90), Rad(-90)), false},
-                [5] = {'rbxassetid://12652775021', CFN(0,0.1,0), CFA(0,Rad(90), 0), false},
-                [6] = {'http://www.roblox.com/asset/?id=11263219250', CFN(0,-0.05,0), CFA(0,Rad(90),Rad(90)), false},
-            }
+                Oof = 3
         elseif Option == "Blocky (black torso) (4)" then
-            Oof = {
-                [1] = {"rbxassetid://13415110780", CFN(0,0,0), CFA(0,0,0), false},
-                [2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
-            
-                [3] = {"rbxassetid://12652775021", CFN(0,0.09,0), CFA(0,Rad(-180),0), false},
-                [4] = {"http://www.roblox.com/asset/?id=11159285454", CFN(0,0,0), CFA(0,0,Rad(90)), false},
-            
-                [5] = {"http://www.roblox.com/asset/?id=11159284657", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
-                [6] = {"http://www.roblox.com/asset/?id=11263219250", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
-            }
+            Oof = 4
         elseif Option == "Free (5)" then
-                Oof = {
-                [1] = {'rbxassetid://4819722776', CFN(0,0,0), CFA(0,0,Rad(-15)), false},
-                [2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
-        
-                [3] = {'rbxassetid://4391374782', CFN(0,0,0), CFA(Rad(90), 0, Rad(-90)), false},
-                [4] = {'rbxassetid://4489233876', CFN(0,0,0), CFA(Rad(90), 0, Rad(90)), false},
-                [5] = {'rbxassetid://4154474807', CFN(0,0,0), CFA(Rad(-90), 0, Rad(90)), false},
-                [6] = {'rbxassetid://4094881938', CFN(0,0,0), CFA(Rad(-90), 0, Rad(-90)), false},
-            }
+                Oof = 5
         elseif Option == "MyWorld (6)" then
-            Oof = {
-                [1] = {'rbxassetid://6963024829', CFN(0,0,0), CFA(0,0,0), true},
-                [2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
-        
-                [3] = {'rbxassetid://11449388499', CFN(0,0,0), CFA(Rad(-125), 0, 0), true},
-                [4] = {'rbxassetid://11449386931', CFN(0,0,0), CFA(Rad(-125), 0, 0), true},
-                [5] = {'rbxassetid://11159370334', CFN(0,0,0), CFA(0, Rad(-90), Rad(90)), true},
-                [6] = {'rbxassetid://11263221350', CFN(0,0,0), CFA(0, Rad(-90), Rad(90)), true},
-            }
+            Oof = 6
         end
     end,
  })
@@ -118,7 +67,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonDefinedHats = Oof
+        Global.KryptonHatPreset = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Attack%20Rifle.lua'))()
@@ -130,7 +79,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonDefinedHats = Oof
+        Global.KryptonHatPreset = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Banzai%20Bazooka.lua'))()
@@ -142,7 +91,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonDefinedHats = Oof
+        Global.KryptonHatPreset = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Dual%20Ultima.lua'))()
@@ -154,7 +103,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonDefinedHats = Oof
+        Global.KryptonHatPreset = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.8)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Ender.lua'))()
@@ -166,7 +115,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonDefinedHats = Oof
+        Global.KryptonHatPreset = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Neptunion%20V.lua'))()
@@ -178,7 +127,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonDefinedHats = Oof
+        Global.KryptonHatPreset = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Quenox.lua'))()
@@ -190,7 +139,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonDefinedHats = Oof
+        Global.KryptonHatPreset = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/The%20Carnage.lua'))()
@@ -202,7 +151,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonDefinedHats = Oof
+        Global.KryptonHatPreset = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/The%20Chips.lua'))()
@@ -214,7 +163,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonDefinedHats = Oof
+        Global.KryptonHatPreset = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Gale%20Fighter.lua'))()
@@ -226,7 +175,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonDefinedHats = Oof
+        Global.KryptonHatPreset = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Goner.lua'))()
@@ -238,7 +187,7 @@ Tab:CreateButton({
     Interact = 'Execute',
     SectionParent = Section1,
     Callback = function()
-        Global.KryptonDefinedHats = Oof
+        Global.KryptonHatPreset = Oof
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/Krypton%20Reanimate.lua'))()
         wait(0.6)
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Blukezz/sussybakc/main/The%20Hotline.lua'))()
