@@ -46,17 +46,17 @@ local Dropdown = Tab:CreateDropdown({
     SectionParent = Section,
     Callback = function(Option)
         if Option == "Sukma (white arms furry tosro) (1)" then
-            Oof = 1
+            Oof = "1"
         elseif Option == "Sukma (white arms) (2)" then
-                Oof = 2
+                Oof = "2"
         elseif Option == "Blocky (3)" then
-                Oof = 3
+                Oof = "3"
         elseif Option == "Blocky (black torso) (4)" then
-            Oof = 4
+            Oof = "4"
         elseif Option == "Free (5)" then
-                Oof = 5
+                Oof = "5"
         elseif Option == "MyWorld (6)" then
-            Oof = 6
+            Oof = "6"
         end
     end,
  })
