@@ -246,17 +246,17 @@ RealRig:BreakJoints()
 Spawn(function()
 	local DesiredHats = Global.KryptonDefinedHats
 	
-	local T1 = GetHandle(DesiredHats[1][1], DesiredHats[1][4])
-local T1_CF = DesiredHats[1][2] * DesiredHats[1][3]
-	local T2 = GetHandle(DesiredHats[2][1], DesiredHats[2][4])
-local T2_CF = DesiredHats[2][2] * DesiredHats[2][3]
-	local RA = GetHandle(DesiredHats[3][1], DesiredHats[3][4])
-local RA_CF = DesiredHats[3][2] * DesiredHats[3][3]
-	local LA = GetHandle(DesiredHats[4][1], DesiredHats[4][4])
-local LA_CF = DesiredHats[4][2] * DesiredHats[4][3]
-	local RL = GetHandle(DesiredHats[5][1], DesiredHats[5][4])
-local RL_CF = DesiredHats[5][2] * DesiredHats[5][3]
-	local LL = GetHandle(DesiredHats[6][1], DesiredHats[6][4])
+	local T1 = GetHandle(Global.KryptonDefinedHats[1][1], Global.KryptonDefinedHats[1][4])
+local T1_CF = Global.KryptonDefinedHats[1][2] * Global.KryptonDefinedHats[1][3]
+	local T2 = GetHandle(Global.KryptonDefinedHats[2][1], Global.KryptonDefinedHats[2][4])
+local T2_CF = Global.KryptonDefinedHats[2][2] * Global.KryptonDefinedHats[2][3]
+	local RA = GetHandle(Global.KryptonDefinedHats[3][1], Global.KryptonDefinedHats[3][4])
+local RA_CF = Global.KryptonDefinedHats[3][2] * Global.KryptonDefinedHats[3][3]
+	local LA = GetHandle(Global.KryptonDefinedHats[4][1], Global.KryptonDefinedHats[4][4])
+local LA_CF = Global.KryptonDefinedHats[4][2] * Global.KryptonDefinedHats[4][3]
+	local RL = GetHandle(Global.KryptonDefinedHats[5][1], Global.KryptonDefinedHats[5][4])
+local RL_CF = Global.KryptonDefinedHats[5][2] * Global.KryptonDefinedHats[5][3]
+	local LL = GetHandle(Global.KryptonDefinedHats[6][1], Global.KryptonDefinedHats[6][4])
 local LL_CF = DesiredHats[6][2] * DesiredHats[6][3]
 
 	TInsert(Events, RunService.PostSimulation:Connect(function()
