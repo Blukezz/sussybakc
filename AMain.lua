@@ -40,7 +40,7 @@ local Oof
 local Dropdown = Tab:CreateDropdown({
     Name = "Hat Preset",
     Options = {"Sukma (white arms furry tosro) (1)","Sukma (white arms) (2)", "Blocky (3)", "Blocky (black torso) (4)", "Free (5)", "MyWorld (6)"},
-    CurrentOption = "Sukma (white arms) (2)",
+    CurrentOption = "Free (5)",
     MultiSelection = false, -- If MultiSelections is allowed
     Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
     SectionParent = Section,

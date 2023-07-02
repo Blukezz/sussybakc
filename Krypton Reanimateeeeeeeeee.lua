@@ -244,7 +244,14 @@ Wait(Players.RespawnTime + Ping:GetValue()/750)
 RealRig:BreakJoints()
 
 Spawn(function()
-	local DesiredHats = Global.KryptonDefinedHats
+	local DesiredHats = Global.KryptonDefinedHats or {
+        [1] = {"rbxassetid://12483623817", CFN(0,0,0), CFA(0,0,0), false},
+        [2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
+        [3] = {"rbxassetid://12344206675", CFN(0,0,0), CFA(Rad(-125),0,0), false},
+        [4] = {"rbxassetid://12344207341", CFN(0,0,0), CFA(Rad(-125),0,0), false},
+        [5] = {"http://www.roblox.com/asset/?id=11159284657", CFN(0,0,0), CFA(0,Rad(-90), Rad(90)), false},
+        [6] = {"http://www.roblox.com/asset/?id=11263219250", CFN(0,0,0), CFA(0,Rad(90), Rad(90)), false},
+    }
 	
 	local T1 = GetHandle(DesiredHats[1][1], DesiredHats[1][4])
 local T1_CF = DesiredHats[1][2] * DesiredHats[1][3]
